@@ -1,22 +1,24 @@
 
 - [Lesson 1: Review of Gauge Theory](#lesson-1-review-of-gauge-theory)
-  - [1. Principal Bundles and Connections](#1-principal-bundles-and-connections)
+  - [1. Principal Bundles](#1-principal-bundles)
     - [Historical Context](#historical-context)
     - [Principal Bundles and Gauge Fields](#principal-bundles-and-gauge-fields)
     - [Principal Bundle Structure:](#principal-bundle-structure)
       - [1. The Base Manifold ( M )](#1-the-base-manifold--m-)
       - [2. The Total Space ( P )](#2-the-total-space--p-)
       - [3. Structure Group ( G )](#3-structure-group--g-)
-    - [Connection 1-Form:](#connection-1-form)
-      - [Examples and Intuition:](#examples-and-intuition)
-      - [Physical Forces and Their Group Structure](#physical-forces-and-their-group-structure)
   - [2. Lie Groups and Lie Algebras](#2-lie-groups-and-lie-algebras)
+    - [Lie Groups](#lie-groups)
+    - [Lie Algebras](#lie-algebras)
+  - [3. Connection 1-Form](#3-connection-1-form)
+      - [Examples and Intuition](#examples-and-intuition)
+      - [Physical Forces and Their Group Structure](#physical-forces-and-their-group-structure)
   - [3. Yang-Mills Theory Basics](#3-yang-mills-theory-basics)
 - [Exercises](#exercises)
 
 # Lesson 1: Review of Gauge Theory
 
-## 1. Principal Bundles and Connections
+## 1. Principal Bundles
 
 ### Historical Context
 
@@ -85,17 +87,8 @@ A principal \( G \)-bundle \( P(M, G) \) is formally defined by:
 
 #### 3. Structure Group \( G \)
 
-**What It Is:**
-
-- The structure group \( G \) is the group that describes the symmetries of the fibers in the principal bundle.
-- It is a Lie group, which means it is a group that is also a smooth manifold.
-
-**Significance:**
-
 - The structure group determines the type of gauge field and the nature of the interactions in the theory.
 - Different physical forces correspond to different structure groups.
-
-**Types of Groups Relevant to Quantum Field Theory (QFT):**
 
 1. **Unitary Groups \( U(n) \):**
 
@@ -120,25 +113,87 @@ A principal \( G \)-bundle \( P(M, G) \) is formally defined by:
 
    - **Description:** \( Sp(n) \) is the group of \( 2n \times 2n \) matrices that preserve a symplectic form, a structure relevant in Hamiltonian mechanics and certain quantum theories.
 
-**Relevance in QFT:**
+## 2. Lie Groups and Lie Algebras
 
-- Different physical forces and their associated gauge fields are described using these groups.
-- For example, the Standard Model of particle physics uses \( U(1) \), \( SU(2) \), and \( SU(3) \) to describe electromagnetism, the weak force, and the strong force, respectively.
+**Historical Context:**
+
+Lie groups and Lie algebras were developed in the late 19th and early 20th centuries by Sophus Lie and others. They were originally used to
+
+ study continuous symmetries of differential equations and have since become fundamental in many areas of mathematics and theoretical physics.
+
+### Lie Groups
+
+A Lie group \( G \) is a group that is also a smooth manifold, where the group operations (multiplication and inversion) are smooth maps. Examples include \( SU(2) \), \( SO(3) \), and \( U(1) \).
+
+### Lie Algebras
+
+The Lie algebra \(\mathfrak{g}\) of a Lie group \( G \) is the tangent space at the identity element, equipped with a bilinear operation called the Lie bracket \([ \cdot, \cdot ]: \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}\). The Lie bracket satisfies the Jacobi identity and is antisymmetric.
+
+**Example: Lie Algebra \(\mathfrak{su}(2)\):**
+
+The Lie algebra \(\mathfrak{su}(2)\) consists of all \(2 \times 2\) skew-Hermitian matrices with trace zero. A basis for \(\mathfrak{su}(2)\) is given by the Pauli matrices:
+\[ T_1 = \frac{1}{2} \begin{pmatrix} 0 & i \\ i & 0 \end{pmatrix}, \quad T_2 = \frac{1}{2} \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}, \quad T_3 = \frac{1}{2} \begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix} \]
+
+The Lie bracket for \(\mathfrak{su}(2)\) is:
+\[ [T_i, T_j] = \epsilon_{ijk} T_k \]
+where \(\epsilon_{ijk}\) is the Levi-Civita symbol.
 
 
-### Connection 1-Form:
+## 3. Connection 1-Form
 
 The connection 1-form \( A \in \Omega^1(P, \mathfrak{g}) \) helps in defining parallel transport and curvature in the context of gauge fields.
+
+where:
+
+1. \( A \) represents the connection 1-form, which is a differential form
+
+2. \( \Omega^1(P, \mathfrak{g}) \) denotes the space of differential 1-forms on the principal bundle \( P \) taking values in the Lie algebra \( \mathfrak{g} \) of the structure group \( G \) of the principal bundle.
+
+   - \( \Omega^1(P) \) is the space of differential 1-forms on the principal bundle \( P \).
+
+   - \( \mathfrak{g} \) is the Lie algebra of the structure group \( G \).
+
+The connection 1-form \( A \) is used to define parallel transport, which describes how vectors in the tangent space of the principal bundle are transported along curves in a consistent manner. The curvature of the connection can be obtained from the connection 1-form using the equation \( F = dA + A \wedge A \), where \( F \) is the curvature 2-form and \( d \) is the exterior derivative.
+
 - **Local Trivializations**:
   - In each local trivialization \( U_i \times G \), the connection 1-form \( A \) can be represented locally.
   - Transition functions \( g_{ij}: U_i \cap U_j \to G \) describe how to move from one local trivialization to another.
+
+**Parallel Transport:**
+
+- Parallel transport describes how to move a vector in the fiber from one point to another along a path in the base manifold without changing its direction relative to the connection.
+- Given a path \(\gamma: [0, 1] \to M\), the connection 1-form \( A \) determines how to transport vectors in the fiber along \(\gamma\) by specifying a way to "connect" nearby fibers.
+
+**Curvature:**
+
+- The curvature 2-form \( F \) is defined using the connection 1-form \( A \) as:
+  \[ F = dA + A \wedge A \]
+  - Here, \( d \) is the exterior derivative, which takes a differential form of degree \( k \) to a form of degree \( k+1 \).
+  - The wedge product \( A \wedge A \) represents an antisymmetric product of the 1-form \( A \) with itself.
+- The curvature \( F \) can be thought of as a measure of how much the connection \( A \) deviates from being flat.
+
+**Physical Interpretation:**
+
+- The curvature 2-form \( F \) captures the idea of "field strength" in gauge theory. For instance, in electromagnetism, \( F \) corresponds to the electromagnetic field tensor \( F_{\mu\nu} \), which encodes the electric and magnetic fields.
+- The presence of non-zero curvature \( F \) indicates that the gauge field has some intrinsic "twist" or "curvature" that affects how particles and fields interact.
+
+**Mathematical Interpretation:**
+
+- If you parallel transport a vector along a closed loop in the base manifold \( M \), the vector may not return to its original direction. The difference is determined by the curvature \( F \).
+- Formally, if \(\gamma\) is a closed loop in \( M \) and \( P_\gamma \) is the parallel transport operator along \(\gamma\), the holonomy of the loop, which measures the failure to return to the initial position, is given by the integral of the curvature over the surface enclosed by \(\gamma\):
+  \[ P_\gamma = \mathcal{P} \exp \left( \oint_\gamma A \right) \]
+  - Here, \(\mathcal{P}\) denotes the path-ordered exponential, which is necessary because \( A \) can vary along the path \(\gamma\).
+  - The deviation of \( P_\gamma \) from the identity map reflects the integrated curvature over the surface bounded by \(\gamma\).
+
+- The curvature form \( F \) thus provides a local description of the field strength and the geometric properties of the gauge field, linking the differential geometric aspects with physical phenomena such as force and interaction fields.
+
 
 **Transformation Under Gauge Symmetry:**
 
 The connection 1-form \( A \) transforms as:
 \[ A \mapsto g^{-1} A g + g^{-1} dg \]
 
-#### Examples and Intuition:
+#### Examples and Intuition
 
 - **Electromagnetic Potential (U(1) Gauge Theory)**:
 
@@ -181,30 +236,6 @@ The connection 1-form \( A \) transforms as:
 - **Gauge Group**: Larger groups such as \( SU(5) \) or \( SO(10) \)
 - **Description**: GUTs aim to unify all the fundamental forces under a single gauge group. The specific group depends on the theory, with \( SU(5) \) and \( SO(10) \) being common examples. These theories predict the existence of new particles and interactions beyond the Standard Model.
 
-## 2. Lie Groups and Lie Algebras
-
-**Historical Context:**
-
-Lie groups and Lie algebras were developed in the late 19th and early 20th centuries by Sophus Lie and others. They were originally used to
-
- study continuous symmetries of differential equations and have since become fundamental in many areas of mathematics and theoretical physics.
-
-**Lie Groups:**
-
-A Lie group \( G \) is a group that is also a smooth manifold, where the group operations (multiplication and inversion) are smooth maps. Examples include \( SU(2) \), \( SO(3) \), and \( U(1) \).
-
-**Lie Algebras:**
-
-The Lie algebra \(\mathfrak{g}\) of a Lie group \( G \) is the tangent space at the identity element, equipped with a bilinear operation called the Lie bracket \([ \cdot, \cdot ]: \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g}\). The Lie bracket satisfies the Jacobi identity and is antisymmetric.
-
-**Example: Lie Algebra \(\mathfrak{su}(2)\):**
-
-The Lie algebra \(\mathfrak{su}(2)\) consists of all \(2 \times 2\) skew-Hermitian matrices with trace zero. A basis for \(\mathfrak{su}(2)\) is given by the Pauli matrices:
-\[ T_1 = \frac{1}{2} \begin{pmatrix} 0 & i \\ i & 0 \end{pmatrix}, \quad T_2 = \frac{1}{2} \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}, \quad T_3 = \frac{1}{2} \begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix} \]
-
-The Lie bracket for \(\mathfrak{su}(2)\) is:
-\[ [T_i, T_j] = \epsilon_{ijk} T_k \]
-where \(\epsilon_{ijk}\) is the Levi-Civita symbol.
 
 ## 3. Yang-Mills Theory Basics
 
